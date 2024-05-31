@@ -66,10 +66,8 @@ while capture.isOpened():
     except:
         pass
 
-    # Show required images
-    cv2.imshow("Gesture", frame)
 
-    # Close the camera if 'q' is pressed
+    cv2.imshow("Gesture", frame)
     if cv2.waitKey(1) == ord('q'):
         break
 
