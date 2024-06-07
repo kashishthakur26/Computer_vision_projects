@@ -22,7 +22,9 @@ def deblur(weight_path, input_dir, output_dir):
 			img = generated[i, :, :, :]
 			output = np.concatenate((x, img), axis=1)
 			im = Image.fromarray(output.astype(np.uint8))
-			im.save(os.path.join(output_dir, image_name))
+			output = os.path.join(output_dir, image_name)
+			im.save(output)
+			return output
 
 weight_path = r'C:\Users\91623\Desktop\Computer_vision_projects\deblur\weights\20240607_170910_0\generator_0_0.weights.h5'
 output_dir = r'C:\Users\91623\Desktop\Computer_vision_projects\deblur\test_image'

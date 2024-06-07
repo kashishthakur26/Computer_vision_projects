@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Deblurring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 50px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Deblurring</h1>
+        <form method="post" action="/deblur" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Upload and Deblur</button>
+        </form>
+        {% if uploaded_image %}
+            <h2>Uploaded Image</h2>
+            <img src="{{ url_for('static', filename='uploads/' ~ uploaded_image) }}" alt="Uploaded Image">
+        {% endif %}
+        {% if deblurred_image %}
+            <h2>Deblurred Image</h2>
+            <img src="{{ url_for('static', filename='output/' ~ deblurred_image) }}" alt="Deblurred Image">
+        {% endif %}
+    </div>
+</body>
+</html>
